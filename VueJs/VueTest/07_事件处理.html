@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <h1>1、绑定监听</h1>
+        <button @click=test1>test1</button>
+        <button @click="test2('msg')">test2</button>
+        <button @click="test3($event)">test3</button>
+        <h1>2、事件修饰符</h1>
+        <div style="width: 200px;height: 200px;background-color:red" @click="div1">
+            <div style="width: 100px;height: 100px;background-color:blue" @click.stop="div2"></div>
+        </div>
+        <h1>3、按键修饰符</h1>
+        <input type="text" @keyup.enter="show($event)">
+    </div>
+</body>
+    <script src="../JS/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#demo',
+            data:{
+                test1(){
+                    alert('test1')
+                },
+                test2(msg){
+                    alert(msg)
+                },
+                test3(event){
+                    alert(event.target.innerHTML)
+                },
+                div1(){
+                    alert('out')
+                },
+                div2(){
+                    alert('int')
+                },
+                show(event){
+                    alert(event.target.value)
+                }
+
+            }
+        })
+    </script>
+</html>

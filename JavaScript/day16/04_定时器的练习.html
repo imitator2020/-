@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            left: 0;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //获取box1
+            var box1 = document.getElementById("box1");
+            //获取按钮
+            var btn01 = document.getElementById("btn01");
+            //定时器标识符
+            var timer;
+            //给按钮绑定点击事件
+            btn01.onclick = function () {
+                //取消该元素上一次的点击而启动的定时器
+                clearInterval(timer);
+
+                //启动定时器，按下按钮后移动,需要给要移动的元素开启定位
+                timer = setInterval(function () {
+                    //获取原来的左边的距离，需要事先设置left值为零，不然获取到的是auto。该行代码需要放置在定时器内，不然会最终效果是点击按钮只移动一次
+                    var oldValue = parseInt(getStyle(box1, "left"));
+                    if(oldValue==800){
+                        clearInterval(timer);
+                    };
+                    var newValue = oldValue + 20 + "px";
+                    box1.style.left = newValue;
+                }, 30);
+            };
+            //获取元素当前样式函数
+            /*
+			 * 定义一个函数，用来获取指定元素的当前的样式
+			 * 参数：
+			 * 		obj 要获取样式的元素
+			 * 		name 要获取的样式名
+			 */
+
+            function getStyle(obj, name) {
+
+                if (window.getComputedStyle) {
+                    //正常浏览器的方式，具有getComputedStyle()方法
+                    return getComputedStyle(obj, null)[name];
+                } else {
+                    //IE8的方式，没有getComputedStyle()方法
+                    return obj.currentStyle[name];
+                }
+
+                //return window.getComputedStyle?getComputedStyle(obj , null)[name]:obj.currentStyle[name];
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点击按钮向右移动</button>
+    <br>
+    <div id="box1"></div>
+
+</body>
+
+</html>

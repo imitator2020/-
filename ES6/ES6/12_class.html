@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		class Person{
+			constructor(name,age) {
+			    this.name=name;
+				this.age=age;
+			}
+			showName(){					//类里面的函数要用简写的形式，不能用函数名：function(){}的形式
+				console.log(this.name)
+			}
+		}
+		let p=new Person("DR",21);
+		p.showName()
+		class Emp extends Person{
+			constructor(name,age,salary) {  //子类继承父类的时候，构造方法里面要调用super(),且super方法要对应的传参数进去
+			    super(name,age);
+				this.salary=salary;
+			}
+			showName(){
+				console.log(this.name,this.age,this.salary)
+			}
+			
+		}
+		let e1=new Emp("DR",21,"10K");
+		e1.showName();
+	</script>
+</html>

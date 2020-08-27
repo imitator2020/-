@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>过滤器</h1>
+    <div id="demo">
+        <p>{{date}}</p>
+        <p>格式化的日期：{{date | dateString}}</p>
+        <p>带参数格式化的日期：{{date | dateString('YYYY-MM-DD')}}</p>
+    </div>
+</body>
+<script src="../JS/vue.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.27.0/moment.js"></script>
+<script>
+    //过滤器
+    Vue.filter('dateString',function(date,format){{
+        return moment(date).format(format||'YYYY-MM-DD HH:mm:ss')
+    }})
+    new Vue({
+        el:'#demo',
+        data: {
+            date:new Date(),
+        }
+    })
+</script>
+</html>

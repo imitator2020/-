@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .b2{
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            //通过类选择器来获取box1，不用getElementsByClassName是后者对于Ie兼容不好
+            var box1=document.querySelector(".box1");
+            //获取按钮对象
+            var btn=document.getElementById("btn");
+            var btn01=document.getElementById("btn01");
+            var btn02=document.getElementById("btn02");
+            //绑定单击响应函数
+            btn.onclick=function(){
+                addClass(box1,"b2");
+
+            };
+            btn01.onclick=function(){
+                removeClass(box1,"b2");
+
+            };
+            btn02.onclick=function(){
+                changeClass(box1,"b2");
+
+            };
+            // 创建添加类的函数
+            //参数：obj:是需要添加类的对象，cn是类名
+            function addClass(obj,cn){
+                if(!hasClass(obj,cn)){
+                    obj.className+=" "+cn;
+                }
+            }
+            //创建删除类的函数
+            function removeClass(obj,cn){
+                //创建正则表达式
+                var reg=new RegExp("\\b"+cn+"\\b");
+                console.log(reg);
+                obj.className=obj.className.replace(reg,"");
+            }
+            //创建判断是否有某个类的函数
+            function hasClass(obj,cn){
+                //创建正则表达式
+                var reg=new RegExp("\\b"+cn+"\\b");
+                return reg.test(obj.className);
+            }
+            //创建切换类函数
+            function changeClass(obj,cn){
+                if(!hasClass(obj,cn)){
+                    addClass(obj,cn);
+                }else{
+                    removeClass(obj,cn);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box1"></div>
+    <button id="btn">点击添加类</button>
+    <button id="btn01">点击删除类</button>
+    <button id="btn02">点击切换类</button>
+</body>
+</html>

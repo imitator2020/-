@@ -1,0 +1,49 @@
+<template>
+      <ul class="todo-main">
+        <!-- <Item v-for="(todo , index) in todos" :key='index' :todo="todo" :index="index" :deleteItem="deleteItem"/> -->
+        <Item v-for="(todo , index) in todos" :key='index' :todo="todo" :index="index" />
+      </ul>
+</template>
+
+<script type="text/ecmascript-6">
+import Item from './TodoItem'
+export default {
+    props: {
+        todos: {
+            type:Array
+        },
+        // deleteItem:{
+        //     type:Function
+        // }
+    },
+    data () {
+        return {}
+    },
+    created () { },
+    mounted () { },
+    methods: {},
+    components: {
+        Item
+    }
+}
+</script>
+
+<style>
+/*main*/
+.todo-main {
+  margin-left: 0px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 0px;
+}
+
+.todo-empty {
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding-left: 5px;
+  margin-top: 10px;
+}
+
+</style>

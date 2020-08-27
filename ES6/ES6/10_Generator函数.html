@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var obj={name:"DR",age:"11"};
+		// 用Symbol.iterator给Obj绑定迭代器,右边是Generator函数
+		obj[Symbol.iterator]=function * myGenerator(){
+			yield obj.name
+			yield obj.age
+		}
+		for(let i of obj){
+			console.log(i)
+		}
+	</script>
+</html>

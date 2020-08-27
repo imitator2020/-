@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var btn01=document.getElementById("btn01");
+            // btn01.addEventListener("click",function(){
+            //     alert(1);
+            // },false);
+            // btn01.addEventListener("click",function(){
+            //     alert(2);
+            // },false);
+            // btn01.addEventListener("click",function(){
+            //     alert(3);
+            // },false);
+            // btn01.attachEvent("onclick",function(){
+            //     alert(1);
+            // });
+            // btn01.attachEvent("onclick",function(){
+            //     alert(2);
+            // });
+            // btn01.attachEvent("onclick",function(){
+            //     alert(3);
+            // });
+            myBind(btn01,"click",function(){
+                alert(1);
+            });
+            myBind(btn01,"click",function(){
+                alert(2);
+            });
+
+            function myBind(obj,eventStr,callback){
+                if(obj.addEventListener){  //大部分浏览器
+                    obj.addEventListener(eventStr,callback,false);
+                }else{
+                    obj.attachEvent("on"+eventStr,function(){
+                        callback.call(obj);
+                    });
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn01">点击此按钮</button>
+</body>
+</html>

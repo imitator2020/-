@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            left: 0;
+            position: absolute;
+        }
+        #box2{
+            height: 1000px;
+            top: 0;
+            left: 800px;
+            border-left: 1px solid black;
+            position: absolute;
+        }
+    </style>
+    <script src="./animation.js"></script>
+    <script>
+
+        window.onload = function () {
+            //获取box1
+            var box1 = document.getElementById("box1");
+            //获取按钮
+            var btn01 = document.getElementById("btn01");
+            var btn02 =document.getElementById("btn02");
+            
+            //给按钮绑定点击事件
+            btn01.onclick = function () {
+                move(box1,"top",800,11,function(){
+                    alert("动画执行完成");
+                });
+            };
+            btn02.onclick=function(){
+                move(box1,0,11);
+            };
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点击按钮向右移动</button>
+    <button id="btn02">点击按钮向左移动</button>
+    <br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    
+</body>
+
+</html>

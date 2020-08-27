@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//模拟Iterator
+		function myIterator(arr){
+			let valueIndex=0;
+			return function(){
+				return valueIndex<arr.length?{value:arr[valueIndex++],done:false}:{value:undefined,done:true};
+				
+			}
+			
+			
+		}
+		var arr=[1,2,3,4,5];
+		var iterator=myIterator(arr);
+		// console.log(iterator())
+		// console.log(iterator())
+		// console.log(iterator())
+		// console.log(iterator())
+		// console.log(iterator())
+		// console.log(iterator())
+		for (let i of arr) {
+			console.log(i)
+		}
+		var str="abcde"
+		for (let i of str) {
+			console.log(i)
+		}
+		function s(){
+			for (let i of arguments) {
+				console.log(i)
+			}
+		}
+		s(1,4,6,7)
+	</script>
+</html>

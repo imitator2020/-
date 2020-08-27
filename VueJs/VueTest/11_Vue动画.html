@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .TF-enter-active ,.TF-leave-active{
+            transition:opacity 2s
+        }
+        .TF-enter,.TF-leave-to{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <button @click="ishow=!ishow">toggle</button>
+        <transition name="TF" mode="">
+            <p v-show="ishow">hello</p>
+        </transition>
+    </div>
+</body>
+<script src="../JS/vue.js"></script>
+<script>
+    new Vue({
+        el:'#demo',
+        data: {
+            ishow:true,
+        }
+    })
+</script>
+</html>

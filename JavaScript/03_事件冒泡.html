@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+        }
+        #sp{
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById("box1");
+            var sp=document.getElementById("sp");
+            box1.onclick=function(){
+                alert("我是box1");
+            };
+            sp.onclick=function(event){
+                event=event||window.event;
+                alert("我是span");
+                event.cancelBubble=true;
+            };
+            document.body.onclick=function(){
+                alert("我是body");
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="box1">
+        我是div
+        <span id="sp">我是span</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		let obj1={name:"DR",age:21}
+		let obj2=Object.assign(obj1);
+		
+		obj2.name="dr";
+		console.log(obj2)
+		console.log(obj1)
+		
+		let arr=[1,2,3,4,5,{name:"DR"}]
+		let arr1=arr.concat();
+		arr1[5].name="dr";
+		console.log(arr)
+		console.log(arr1)
+		console.log("============")
+		let arr2=[1,2,3,4,5,{name:"duliu"}]
+		let arr3=arr2.slice()
+		arr3[5].name="DULIU"
+		console.log(arr2);
+		console.log("============")
+		
+		let arr4=[1,2,3,4,5,{name:"ruru"}]
+		let arr5=JSON.parse(JSON.stringify(arr4));
+		arr5[5].name="RURU";
+		console.log(arr4)
+		console.log(arr5)
+	</script>
+</html>

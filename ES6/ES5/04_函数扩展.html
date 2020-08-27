@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var obj={usrname:"李华"};
+		function foo(data1,data2){
+			console.log(this,data1,data2)
+		}
+		foo(33,36);//直接调用，this是window
+		foo.call(obj,33,36)//用call方式改变this的指向，传入参数的时候，第二个参数开始依次按顺序传入
+		foo.apply(obj,[33,36])//用apply改变this的指向，传入参数的时候，第二个参数以及后续参数必须是以数组的形式传入
+		foo.bind(obj,33,36)()//用bind的方法来改变this的指向，传入参数和call类似，但bind不会立即调用
+	</script>
+</html>

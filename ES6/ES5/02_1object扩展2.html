@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var person={
+			firstName:"A",
+			lastName:"B",
+			get fullName(){
+				return this.firstName+" "+this.lastName;
+			},
+			set fullName(data){
+				var names=data.split(" ");
+				this.firstName=names[0];
+				this.lastName=names[1];
+			}
+			}
+		console.log(person.fullName);
+		person.fullName="C D";
+		console.log(person.fullName);
+	</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		// 初始对象
+		let promise=new Promise((resovle,reject)=>{
+			//实例化一个XmlHttpRequest对象
+			let xhr=new XMLHttpRequest();
+			//初始化
+			xhr.open('GET', "https://www.baidu.com")
+			//发送请求
+			xhr.send()
+			//绑定事件用于处理响应后
+			xhr.onreadystatechange=function(){
+				//判断
+				if(xhr.readyState===4){
+					//判断状态响应码200-299
+					if(xhr.status>=200&&xhr.status<300){
+						//2xx是请求成功
+						resolve(xhr.response);
+					}else{
+						reject(xhr.status);
+					}
+				}
+			}
+			
+		})
+		promise.then(
+		(data)=>{
+			console.log(data,"请求成功")
+		},
+		(errMsg)=>{
+			console.log(errMsg,"请求失败")
+		}
+		)
+	</script>
+</html>

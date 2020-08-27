@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//检查数据类型的函数
+		function checkType(target){
+			return Object.prototype.toString.call(target).slice(8,-1);
+		}
+		var arr="[1,2,3]"
+		console.log(checkType(arr))
+		// 克隆的函数
+		function clone(target){
+			let result; //result最终返回的数据
+			let type=checkType(target)
+			// 初始化
+			if(type==="Object"){
+				result={}
+			}else if(type==="Array"){
+				result=[]
+			}else{
+				return target;
+			}
+			//遍历需要克隆的目标对象
+			for(let i in target){
+				let value=target[i]//把遍历到的数据赋值给临时变量value
+				//判断遍历到的数据是否是嵌套的数组或者对象
+				if(checkType(target[i])==="Object"||checkType(target[i])==="Array"){
+					result[i]=clone(value)  //递归调用赋值给返回的结果
+				}else{
+					result[i]=value;
+				}
+				
+			}
+			return result;
+		}
+		var arr1=[1,2,3,4,{userName:"DR",age:21}];
+		var arr2=clone(arr1);
+		arr2[4].userName="ruru";
+		console.log(arr1,arr2);
+	</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <button @click="destroy">destroy vm</button>
+        <p v-show=ishow>频闪</p>
+    </div>
+</body>
+<script src="../JS/vue.js"></script>
+<script>
+    new Vue({
+        el:'#demo',
+        data: {
+            ishow:''
+        },
+        mounted () {
+            this.interval = setInterval(()=>{
+                console.log('--------')
+                this.ishow=!this.ishow
+            },1000)
+        },
+        beforeDestroy () {
+            clearInterval(this.interval)
+        },
+        methods: {
+            destroy(){
+                this.$destroy()
+            }
+        }
+    });
+</script>
+</html>

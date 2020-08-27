@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<h1>1、大括号表示</h1>
+			<p>{{message}}</p>
+			<h1>2、指令一：强制数据绑定</h1>
+			<img :src="imgsrc" >
+			<br>
+			<img v-bind:src="imgsrc">
+			<h1>3、指令二：绑定事件监听</h1>
+			<button type="button" @click="test">按钮一</button>
+			<button type="button" v-on:click="test">按钮二</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="../JS/vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				message:'Vue模板语法',
+				imgsrc:'https://cn.vuejs.org/images/logo.png'
+			},
+			methods:{
+				test(){
+					alert(1111)
+				}
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.aclass{
+				color: red;
+			}
+			.bclass{
+				color: yellow;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="demo">
+		  <h2>1. class绑定: :class='xxx'</h2>
+			<p :class="a">class绑定，class为字符串</p>
+			<p :class="{aclass:hasA,bclass:hasB}">calss绑定，class为对象</p>
+		  <h2>2. style绑定</h2>
+			<p :style="{color:activecolor,fontSize}">style绑定，绑定的是对象</p>
+		
+		  <button @click="update">更新</button>
+		
+		</div>
+	</body>
+	<script type="text/javascript" src="../JS/vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#demo',
+			data:{
+				a:"aclass",
+				hasA:true,
+				hasB:false,
+				activecolor:'red',
+				fontSize:'10px'
+			},
+			methods:{
+				update(){
+					this.a="bclass"
+					this.hasA=!this.hasA,
+					this.hasB=!this.hasB
+					this.activecolor='blue',
+					this.fontSize='30px'
+				}
+			}
+		})
+	</script>
+</html>
