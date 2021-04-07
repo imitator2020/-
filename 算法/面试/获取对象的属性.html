@@ -1,0 +1,63 @@
+<!-- 取对象中某个属性，或者对象中的某个对象的属性，有就返回这个值，没有就返回unknown -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function getAttr(obj, targetAttr) {
+        let keys = [],
+            values = [];
+        let flag = false;
+        for (let [key, value] of Object.entries(obj)) {
+            keys.push(key);
+            values.push(value);
+        }
+        if (keys.indexOf(targetAttr) !== -1) {
+            // console.log(obj[targetAttr]);
+            return obj[targetAttr];
+        } else {
+            console.log("执行else语句");
+            for (let i = 0; i < values.length; i++) {
+                if (Object.prototype.toString.call(values[i]) === '[object Object]') {
+                    console.log("是对象",values[i]);
+                    for (let key of Object.keys(values[i])) {
+                        if (key === targetAttr) {
+                            return values[i][key];
+                            flag = true;
+                        }
+                    }
+                    if (flag) {
+                        break;
+                    }
+                }
+            }
+            if (!flag) {
+                return "unknown";
+            }
+        }
+
+    }
+    let obj = {
+        name: "a",
+        age: 18,
+        // target: "target"
+        child: {
+            name: "b",
+            age: 19,
+            // target: "child"
+        }
+    };
+    let result = getAttr(obj, "target")
+    console.log(result);
+</script>
+
+</html>
