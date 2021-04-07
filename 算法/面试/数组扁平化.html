@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function flatten (arr) {
+       return arr.reduce((a, b) => {
+            if( b instanceof Array) {
+                return a.concat(flatten(b))
+            } else {
+                return a.concat(b)
+            }
+        }, [])
+    }
+    let arr =[[0, [111, 222], 1], [2, [333, [444, 555]], 3], [4, 5]];
+    console.log(flatten(arr));
+</script>
+</html>
